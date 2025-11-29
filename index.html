@@ -1,271 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Visa Regulations Tracking</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.S. Visa Information - Official Regulations</title>
   <style>
-    body { 
-      font-family: system-ui, sans-serif; 
-      margin: 2rem; 
-      background: #fafafa; 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
       line-height: 1.6;
     }
     
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
     header {
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #ddd;
+      background-color: #1a365d;
+      color: white;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     
     h1 {
-      color: #1a365d;
-      margin-bottom: 0.5rem;
-    }
-    
-    .meta-info {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .meta-label {
+      font-size: 28px;
       font-weight: 600;
-      color: #4a5568;
-      font-size: 0.9rem;
     }
     
-    .meta-value {
-      color: #2d3748;
+    .official-badge {
+      background-color: #e53e3e;
+      padding: 5px 15px;
+      border-radius: 4px;
+      font-size: 14px;
       font-weight: 500;
     }
     
-    .updates { 
-      background: #fff; 
-      padding: 1.5rem; 
-      border-radius: 8px; 
-      border: 1px solid #ddd; 
-      margin-bottom: 2rem;
-    }
-    
-    .update-item { 
-      border-top: 1px solid #e2e8f0; 
-      padding: 1rem 0; 
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
-    
-    .update-item:first-child { 
-      border-top: none; 
-    }
-    
-    .badge { 
-      background: #dce6ff; 
-      padding: 0.15rem 0.5rem; 
-      font-size: 0.75rem; 
-      border-radius: 12px; 
-      display: inline-block;
-    }
-    
-    .requirement-details {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #4a5568;
-    }
-    
-    .requirement-details div {
-      margin-bottom: 0.25rem;
-    }
-    
-    .change-info {
+    .last-updated {
       text-align: right;
-      font-size: 0.9rem;
+      color: #718096;
+      font-size: 14px;
+      margin-top: 5px;
     }
     
-    .change-type {
+    .visa-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    
+    .visa-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      transition: transform 0.3s ease;
+    }
+    
+    .visa-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .visa-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .visa-title {
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 0.25rem;
+      color: #2d3748;
     }
     
-    .change-details {
+    .visa-code {
+      background-color: #ebf8ff;
+      color: #3182ce;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .visa-details {
+      margin-bottom: 20px;
+    }
+    
+    .detail-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    
+    .detail-label {
+      font-weight: 500;
       color: #4a5568;
+      min-width: 140px;
+    }
+    
+    .detail-value {
+      color: #2d3748;
+    }
+    
+    .requirements {
+      margin-top: 20px;
+    }
+    
+    .requirements h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #2d3748;
+    }
+    
+    .requirements ul {
+      padding-left: 20px;
+    }
+    
+    .requirements li {
+      margin-bottom: 8px;
+      color: #4a5568;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: #718096;
+      font-size: 14px;
+      border-top: 1px solid #e2e8f0;
     }
     
     @media (max-width: 768px) {
-      .update-item {
+      .visa-types {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
       }
       
-      .change-info {
-        text-align: left;
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .official-badge {
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Visa Regulations Tracking</h1>
-    <div class="meta-info">
-      <div class="meta-item">
-        <span class="meta-label">Snapshot ID</span>
-        <span class="meta-value">VISA-2023-Q4-001</span>
+    <div class="container">
+      <div class="header-content">
+        <h1>U.S. Visa Information & Requirements</h1>
+        <div class="official-badge">OFFICIAL INFORMATION</div>
       </div>
-      <div class="meta-item">
-        <span class="meta-label">Generated at (UTC)</span>
-        <span class="meta-value">2023-11-15 14:30:00</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Regulatory Body</span>
-        <span class="meta-value">U.S. Department of State</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Last Updated</span>
-        <span class="meta-value">2023-11-10</span>
-      </div>
+      <div class="last-updated">Last updated: November 15, 2023</div>
     </div>
   </header>
-
-  <section class="updates">
-    <h2>Visa Requirement Updates</h2>
-    
-    <div class="update-item">
-      <div>
-        <span class="badge">Tourist Visa</span>
-        <div class="requirement-details">
-          <div><strong>Visa Type:</strong> B-2</div>
-          <div><strong>Cost:</strong> $160</div>
-          <div><strong>Processing Time:</strong> 10-15 days</div>
-          <div><strong>Validity:</strong> 10 years</div>
-          <div><strong>Acceptance Rate:</strong> 85%</div>
+  
+  <div class="container">
+    <div class="visa-types">
+      <!-- Tourist Visa -->
+      <div class="visa-card">
+        <div class="visa-header">
+          <div class="visa-title">Tourist Visa</div>
+          <div class="visa-code">B-2</div>
+        </div>
+        <div class="visa-details">
+          <div class="detail-row">
+            <div class="detail-label">Application Fee:</div>
+            <div class="detail-value">$160 USD</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Processing Time:</div>
+            <div class="detail-value">10-15 business days</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Validity Period:</div>
+            <div class="detail-value">10 years (multiple entries)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Maximum Stay:</div>
+            <div class="detail-value">6 months per entry</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Acceptance Rate:</div>
+            <div class="detail-value">Approximately 85%</div>
+          </div>
+        </div>
+        <div class="requirements">
+          <h3>Required Documents:</h3>
+          <ul>
+            <li>Valid passport (6+ months validity)</li>
+            <li>Completed DS-160 form</li>
+            <li>Recent passport photograph</li>
+            <li>Proof of financial means</li>
+            <li>Travel itinerary</li>
+            <li>Proof of ties to home country</li>
+          </ul>
         </div>
       </div>
-      <div>
-        <strong>Financial Requirements Updated</strong>
-        <div class="requirement-details">
-          <div>Minimum bank balance requirement increased from $2,500 to $3,000</div>
-          <div>Proof of accommodation now mandatory for all applicants</div>
-          <div>Travel insurance coverage minimum increased to $50,000</div>
+      
+      <!-- Business Visa -->
+      <div class="visa-card">
+        <div class="visa-header">
+          <div class="visa-title">Business Visa</div>
+          <div class="visa-code">B-1</div>
+        </div>
+        <div class="visa-details">
+          <div class="detail-row">
+            <div class="detail-label">Application Fee:</div>
+            <div class="detail-value">$190 USD</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Processing Time:</div>
+            <div class="detail-value">12-18 business days</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Validity Period:</div>
+            <div class="detail-value">1 year (multiple entries)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Maximum Stay:</div>
+            <div class="detail-value">6 months per entry</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Acceptance Rate:</div>
+            <div class="detail-value">Approximately 79%</div>
+          </div>
+        </div>
+        <div class="requirements">
+          <h3>Required Documents:</h3>
+          <ul>
+            <li>Valid passport (6+ months validity)</li>
+            <li>Completed DS-160 form</li>
+            <li>Letter from employer</li>
+            <li>Business invitation from U.S. company</li>
+            <li>Proof of business activities</li>
+            <li>Financial documentation</li>
+          </ul>
         </div>
       </div>
-      <div class="change-info">
-        <div class="change-type">Change Level: 3</div>
-        <div class="change-details">Effective: Dec 1, 2023</div>
-        <div class="change-details">Impact: Medium</div>
+      
+      <!-- Student Visa -->
+      <div class="visa-card">
+        <div class="visa-header">
+          <div class="visa-title">Student Visa</div>
+          <div class="visa-code">F-1</div>
+        </div>
+        <div class="visa-details">
+          <div class="detail-row">
+            <div class="detail-label">Application Fee:</div>
+            <div class="detail-value">$350 USD</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Processing Time:</div>
+            <div class="detail-value">30-45 business days</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Validity Period:</div>
+            <div class="detail-value">Duration of study program</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Work Permission:</div>
+            <div class="detail-value">Limited on-campus employment</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Acceptance Rate:</div>
+            <div class="detail-value">Approximately 72%</div>
+          </div>
+        </div>
+        <div class="requirements">
+          <h3>Required Documents:</h3>
+          <ul>
+            <li>Valid passport (6+ months validity)</li>
+            <li>Form I-20 from SEVP-certified school</li>
+            <li>Proof of financial support</li>
+            <li>Academic transcripts and diplomas</li>
+            <li>English proficiency test results</li>
+            <li>Completed DS-160 form</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Work Visa -->
+      <div class="visa-card">
+        <div class="visa-header">
+          <div class="visa-title">Work Visa</div>
+          <div class="visa-code">H-1B</div>
+        </div>
+        <div class="visa-details">
+          <div class="detail-row">
+            <div class="detail-label">Application Fee:</div>
+            <div class="detail-value">$555 USD</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Processing Time:</div>
+            <div class="detail-value">60-90 business days</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Validity Period:</div>
+            <div class="detail-value">3 years (extendable to 6)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Annual Cap:</div>
+            <div class="detail-value">85,000 visas</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Acceptance Rate:</div>
+            <div class="detail-value">Approximately 65%</div>
+          </div>
+        </div>
+        <div class="requirements">
+          <h3>Required Documents:</h3>
+          <ul>
+            <li>Valid passport (6+ months validity)</li>
+            <li>Form I-129 petition by employer</li>
+            <li>Labor Condition Application (LCA)</li>
+            <li>Proof of bachelor's degree or equivalent</li>
+            <li>Job offer letter</li>
+            <li>Employer support documents</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Transit Visa -->
+      <div class="visa-card">
+        <div class="visa-header">
+          <div class="visa-title">Transit Visa</div>
+          <div class="visa-code">C-1</div>
+        </div>
+        <div class="visa-details">
+          <div class="detail-row">
+            <div class="detail-label">Application Fee:</div>
+            <div class="detail-value">$120 USD</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Processing Time:</div>
+            <div class="detail-value">5-7 business days</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Validity Period:</div>
+            <div class="detail-value">3 months</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Maximum Stay:</div>
+            <div class="detail-value">Up to 12 hours</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Acceptance Rate:</div>
+            <div class="detail-value">Approximately 92%</div>
+          </div>
+        </div>
+        <div class="requirements">
+          <h3>Required Documents:</h3>
+          <ul>
+            <li>Valid passport (6+ months validity)</li>
+            <li>Confirmed onward ticket</li>
+            <li>Visa for final destination (if required)</li>
+            <li>Completed DS-160 form</li>
+            <li>Travel itinerary</li>
+          </ul>
+        </div>
       </div>
     </div>
-    
-    <div class="update-item">
-      <div>
-        <span class="badge">Business Visa</span>
-        <div class="requirement-details">
-          <div><strong>Visa Type:</strong> B-1</div>
-          <div><strong>Cost:</strong> $190</div>
-          <div><strong>Processing Time:</strong> 12-18 days</div>
-          <div><strong>Validity:</strong> 1 year</div>
-          <div><strong>Acceptance Rate:</strong> 79%</div>
-        </div>
-      </div>
-      <div>
-        <strong>Documentation Requirements Changed</strong>
-        <div class="requirement-details">
-          <div>Letter of invitation now requires notarization</div>
-          <div>Business registration documents must be translated</div>
-          <div>Additional interview questions for certain industries</div>
-        </div>
-      </div>
-      <div class="change-info">
-        <div class="change-type">Change Level: 2</div>
-        <div class="change-details">Effective: Nov 20, 2023</div>
-        <div class="change-details">Impact: Low</div>
-      </div>
+  </div>
+  
+  <div class="footer">
+    <div class="container">
+      <p>U.S. Department of State - Bureau of Consular Affairs</p>
+      <p>This information is provided for reference purposes only. Regulations may change without notice.</p>
     </div>
-    
-    <div class="update-item">
-      <div>
-        <span class="badge">Student Visa</span>
-        <div class="requirement-details">
-          <div><strong>Visa Type:</strong> F-1</div>
-          <div><strong>Cost:</strong> $350</div>
-          <div><strong>Processing Time:</strong> 30-45 days</div>
-          <div><strong>Validity:</strong> Duration of study</div>
-          <div><strong>Acceptance Rate:</strong> 72%</div>
-        </div>
-      </div>
-      <div>
-        <strong>Academic Requirements Updated</strong>
-        <div class="requirement-details">
-          <div>Minimum GPA requirement increased to 3.0 for undergraduate programs</div>
-          <div>English proficiency test scores now valid for 1 year (previously 2 years)</div>
-          <div>Additional financial documentation required for private institutions</div>
-        </div>
-      </div>
-      <div class="change-info">
-        <div class="change-type">Change Level: 4</div>
-        <div class="change-details">Effective: Jan 1, 2024</div>
-        <div class="change-details">Impact: High</div>
-      </div>
-    </div>
-    
-    <div class="update-item">
-      <div>
-        <span class="badge">Work Visa</span>
-        <div class="requirement-details">
-          <div><strong>Visa Type:</strong> H-1B</div>
-          <div><strong>Cost:</strong> $555</div>
-          <div><strong>Processing Time:</strong> 60-90 days</div>
-          <div><strong>Validity:</strong> 3 years</div>
-          <div><strong>Acceptance Rate:</strong> 65%</div>
-        </div>
-      </div>
-      <div>
-        <strong>Salary Thresholds Increased</strong>
-        <div class="requirement-details">
-          <div>Minimum salary requirement increased by 15% across all categories</div>
-          <div>Additional wage documentation required for companies with >50 employees</div>
-          <div>New prevailing wage determination process implemented</div>
-        </div>
-      </div>
-      <div class="change-info">
-        <div class="change-type">Change Level: 5</div>
-        <div class="change-details">Effective: Oct 1, 2023</div>
-        <div class="change-details">Impact: Critical</div>
-      </div>
-    </div>
-    
-    <div class="update-item">
-      <div>
-        <span class="badge">Transit Visa</span>
-        <div class="requirement-details">
-          <div><strong>Visa Type:</strong> C-1</div>
-          <div><strong>Cost:</strong> $120</div>
-          <div><strong>Processing Time:</strong> 5-7 days</div>
-          <div><strong>Validity:</strong> 3 months</div>
-          <div><strong>Acceptance Rate:</strong> 92%</div>
-        </div>
-      </div>
-      <div>
-        <strong>Processing Fee Adjustment</strong>
-        <div class="requirement-details">
-          <div>Application fee increased from $100 to $120</div>
-          <div>Maximum transit time extended from 8 to 12 hours</div>
-          <div>New airport transit requirements for certain nationalities</div>
-        </div>
-      </div>
-      <div class="change-info">
-        <div class="change-type">Change Level: 1</div>
-        <div class="change-details">Effective: Immediate</div>
-        <div class="change-details">Impact: Low</div>
-      </div>
-    </div>
-  </section>
+  </div>
 </body>
 </html>
