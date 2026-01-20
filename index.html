@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>U.S. Visa Information - Official Regulations</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Information Center - Sample Data</title>
   <style>
     * {
       margin: 0;
@@ -11,59 +11,72 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', Arial, sans-serif;
     }
-    
+
     body {
       background-color: #f5f5f5;
       color: #333;
       line-height: 1.6;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
-    
+
     header {
       background-color: #1a365d;
       color: white;
       padding: 20px 0;
       margin-bottom: 30px;
     }
-    
+
     .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
     }
-    
+
     h1 {
       font-size: 28px;
       font-weight: 600;
     }
-    
+
     .official-badge {
       background-color: #e53e3e;
       padding: 5px 15px;
       border-radius: 4px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
+      white-space: nowrap;
     }
-    
+
     .last-updated {
       text-align: right;
-      color: #718096;
+      color: #e2e8f0;
       font-size: 14px;
-      margin-top: 5px;
+      margin-top: 8px;
+      opacity: 0.95;
     }
-    
+
+    .notice {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 14px;
+    }
+
     .visa-types {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 25px;
       margin-bottom: 40px;
     }
-    
+
     .visa-card {
       background-color: white;
       border-radius: 8px;
@@ -71,11 +84,11 @@
       padding: 25px;
       transition: transform 0.3s ease;
     }
-    
+
     .visa-card:hover {
       transform: translateY(-5px);
     }
-    
+
     .visa-header {
       display: flex;
       justify-content: space-between;
@@ -83,61 +96,65 @@
       margin-bottom: 15px;
       padding-bottom: 15px;
       border-bottom: 1px solid #e2e8f0;
+      gap: 10px;
     }
-    
+
     .visa-title {
       font-size: 20px;
       font-weight: 600;
       color: #2d3748;
     }
-    
+
     .visa-code {
       background-color: #ebf8ff;
       color: #3182ce;
       padding: 4px 10px;
       border-radius: 4px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
+      white-space: nowrap;
     }
-    
+
     .visa-details {
       margin-bottom: 20px;
     }
-    
+
     .detail-row {
       display: flex;
       margin-bottom: 10px;
+      gap: 10px;
     }
-    
+
     .detail-label {
-      font-weight: 500;
+      font-weight: 600;
       color: #4a5568;
-      min-width: 140px;
+      min-width: 160px;
     }
-    
+
     .detail-value {
       color: #2d3748;
+      flex: 1;
     }
-    
+
     .requirements {
       margin-top: 20px;
     }
-    
+
     .requirements h3 {
       font-size: 16px;
       margin-bottom: 10px;
       color: #2d3748;
     }
-    
+
     .requirements ul {
       padding-left: 20px;
     }
-    
+
     .requirements li {
       margin-bottom: 8px;
       color: #4a5568;
     }
-    
+
     .footer {
       text-align: center;
       margin-top: 50px;
@@ -146,185 +163,199 @@
       font-size: 14px;
       border-top: 1px solid #e2e8f0;
     }
-    
+
     @media (max-width: 768px) {
       .visa-types {
         grid-template-columns: 1fr;
       }
-      
+
       .header-content {
         flex-direction: column;
         align-items: flex-start;
       }
-      
+
       .official-badge {
-        margin-top: 10px;
+        margin-top: 8px;
+      }
+
+      .last-updated {
+        text-align: left;
+      }
+
+      .detail-label {
+        min-width: 140px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <div class="header-content">
-        <h1>U.S. Visa Regulations & Information Center</h1>
-        <div class="official-badge">OFFICIAL SOURCE</div>
+        <h1>Visa Regulations & Information Center</h1>
+        <div class="official-badge">SAMPLE DATA</div>
       </div>
-      <div class="last-updated">Current as of: September 17, 2024</div>
+      <div class="last-updated">Current as of: March 03, 2026</div>
+      <div class="notice">
+        This page uses <b>demo/placeholder values</b> for UI testing only. Replace with real data when ready.
+      </div>
     </div>
   </header>
-  
+
   <div class="container">
     <div class="visa-types">
-      
-      <!-- Student Visa -->
+
+      <!-- Sample Visa 1 -->
       <div class="visa-card">
         <div class="visa-header">
-          <div class="visa-title">Academic Student Visa</div>
-          <div class="visa-code">F-20</div>
+          <div class="visa-title">Global Study Pathway Visa</div>
+          <div class="visa-code">GX-12</div>
         </div>
+
         <div class="visa-details">
           <div class="detail-row">
             <div class="detail-label">Application Fee:</div>
-            <div class="detail-value">$160 USD</div>
+            <div class="detail-value">$245 USD</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Processing Time:</div>
-            <div class="detail-value">10-20 calendar days</div>
+            <div class="detail-value">7–14 business days</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Validity Period:</div>
-            <div class="detail-value">Up to 6 years (multiple entry)</div>
+            <div class="detail-value">Up to 3 years (multiple entry)</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Maximum Stay:</div>
-            <div class="detail-value">D/S + 60-day grace period</div>
+            <div class="detail-value">120 days per entry + 15-day grace</div>
           </div>
           <div class="detail-row">
-            <div class="detail-label">SEVIS Fee:</div>
-            <div class="detail-value">$305 (additional)</div>
+            <div class="detail-label">Service Charge:</div>
+            <div class="detail-value">$48 (additional)</div>
           </div>
         </div>
+
         <div class="requirements">
           <h3>Required Documents:</h3>
           <ul>
-            <li>Passport valid 67+ months beyond stay</li>
-            <li>DS-160 confirmation page</li>
-            <li>Form I-67 signed by school</li>
-            <li>SEVIS fee payment receipt</li>
-            <li>Bank statements for first year</li>
-            <li>Academic transcripts and diplomas</li>
-            <li>Test scores if required</li>
-            <li>Digital photo meeting requirements</li>
-            <li>Visa interview confirmation</li>
-            <li>Proof of intent to return home</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Exchange Visitor Visa -->
-      <div class="visa-card">
-        <div class="visa-header">
-          <div class="visa-title">Cultural Exchange Visa</div>
-          <div class="visa-code">J-1</div>
-        </div>
-        <div class="visa-details">
-          <div class="detail-row">
-            <div class="detail-label">Application Fee:</div>
-            <div class="detail-value">$7675 USD</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">Processing Time:</div>
-            <div class="detail-value">20-5670 calendar days</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">Validity Period:</div>
-            <div class="detail-value">Program duration + 45-day grace period</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">Maximum Stay:</div>
-            <div class="detail-value">1-5 years depending on category</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">SEVIS Fee:</div>
-            <div class="detail-value">$25 (additional)</div>
-          </div>
-        </div>
-        <div class="requirements">
-          <h3>Required Documents:</h3>
-          <ul>
-            <li>Passport with 6+ months validity</li>
-            <li>DS-160 confirmation page</li>
-            <li>Form DS-2019</li>
-            <li>SEVIS fee receipt</li>
-            <li>Sponsor program documents</li>
-            <li>Medical insurance proof</li>
-            <li>Evidence of home country ties</li>
-            <li>English proficiency proof</li>
-            <li>Two passport photos</li>
-            <li>Resume/CV if applicable</li>
+            <li>Passport valid 9+ months</li>
+            <li>Online application confirmation</li>
+            <li>Admission letter (original or digital copy)</li>
+            <li>Proof of funding (3 months history)</li>
+            <li>Accommodation details</li>
+            <li>Academic records (latest 2)</li>
+            <li>Digital photo (plain background)</li>
+            <li>Travel plan / itinerary</li>
+            <li>Guardian consent (if under 18)</li>
+            <li>Intent statement</li>
           </ul>
         </div>
       </div>
 
-      <!-- Business Visitor Visa -->
+      <!-- Sample Visa 2 -->
       <div class="visa-card">
         <div class="visa-header">
-          <div class="visa-title">Business Visitor Visa</div>
-          <div class="visa-code">B-1</div>
+          <div class="visa-title">Cultural Exchange & Training Visa</div>
+          <div class="visa-code">CT-09</div>
         </div>
+
         <div class="visa-details">
           <div class="detail-row">
             <div class="detail-label">Application Fee:</div>
-            <div class="detail-value">$325 USD</div>
+            <div class="detail-value">$310 USD</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Processing Time:</div>
-            <div class="detail-value">15-60 business days</div>
+            <div class="detail-value">12–28 calendar days</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Validity Period:</div>
-            <div class="detail-value">5-10 years (multiple entry)</div>
+            <div class="detail-value">Program duration + 20-day grace</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Maximum Stay:</div>
-            <div class="detail-value">Up to 6 months per visit</div>
+            <div class="detail-value">Up to 18 months (category-based)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Program Fee:</div>
+            <div class="detail-value">$75 (additional)</div>
+          </div>
+        </div>
+
+        <div class="requirements">
+          <h3>Required Documents:</h3>
+          <ul>
+            <li>Passport valid 6+ months</li>
+            <li>Program sponsorship letter</li>
+            <li>Participant profile form</li>
+            <li>Health coverage proof</li>
+            <li>Host contact details</li>
+            <li>CV / portfolio (if required)</li>
+            <li>English proficiency note</li>
+            <li>Two recent photos</li>
+            <li>Home ties evidence</li>
+            <li>Emergency contact form</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sample Visa 3 -->
+      <div class="visa-card">
+        <div class="visa-header">
+          <div class="visa-title">Business Mobility Visitor Visa</div>
+          <div class="visa-code">BM-01</div>
+        </div>
+
+        <div class="visa-details">
+          <div class="detail-row">
+            <div class="detail-label">Application Fee:</div>
+            <div class="detail-value">$190 USD</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Processing Time:</div>
+            <div class="detail-value">5–20 business days</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Validity Period:</div>
+            <div class="detail-value">Up to 2 years (multiple entry)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Maximum Stay:</div>
+            <div class="detail-value">45 days per visit</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Interview Waiver:</div>
-            <div class="detail-value">Available for certain renewals</div>
+            <div class="detail-value">Eligible for renewals (case-by-case)</div>
           </div>
         </div>
+
         <div class="requirements">
           <h3>Required Documents:</h3>
           <ul>
             <li>Valid passport (6+ months)</li>
-            <li>Completed DS-160 form</li>
-            <li>Letter from U.S. organization</li>
-            <li>Letter from home employer</li>
-            <li>Proof of sufficient funds</li>
-            <li>Evidence of strong ties to home country</li>
-            <li>Business itinerary</li>
-            <li>Previous travel history</li>
-            <li>Business registration (if self-employed)</li>
-            <li>Conference/event registration if applicable</li>
+            <li>Online form completion receipt</li>
+            <li>Invitation letter from host company</li>
+            <li>Employer letter (home country)</li>
+            <li>Proof of funds (trip coverage)</li>
+            <li>Business itinerary & meeting schedule</li>
+            <li>Company registration (if self-employed)</li>
+            <li>Accommodation or host address</li>
+            <li>Travel history summary (optional)</li>
+            <li>Return intent evidence</li>
           </ul>
         </div>
       </div>
 
     </div>
   </div>
-  
+
   <div class="footer">
     <div class="container">
-      <p>U.S. Department of State - Bureau of Consular Affairs</p>
-      <p>For most current information, visit travel.state.gov or uscis.gov</p>
-      <p>All data is subject to change. Consult official U.S. government sources before application.</p>
+      <p>Demo Visa Portal UI</p>
+      <p>Replace sample numbers and text with your real backend/API values.</p>
+      <p>© 2026</p>
     </div>
   </div>
 </body>
 </html>
-
-
-
-
